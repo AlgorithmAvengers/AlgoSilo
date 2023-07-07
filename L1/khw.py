@@ -4,3 +4,4 @@ class Solution:
             for j in range(len(nums)):
                 if (nums[i] + nums[j] == target) & (i != j):
                     return [i,j]
+# re
