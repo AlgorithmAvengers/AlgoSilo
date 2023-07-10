@@ -3,6 +3,7 @@
 
 # Unignore
 !*.py
+!*.ipynb
 !*.cpp
 !*.c
 !*/
