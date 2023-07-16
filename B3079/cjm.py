@@ -16,10 +16,8 @@ def minTime():
         return result
 
 
-    while start+1 < end:
+    while start <= end:
         mid = (start + end) // 2
-        # print(mid)
-
         temp = check(mid)
 
         if temp == M:
@@ -29,10 +27,10 @@ def minTime():
             return
         
         elif temp > M:
-            end = mid
+            end = mid-1
             
             
         else:
-            start = mid
-    print(end)
+            start = mid + 1
+    print(end+1)
 minTime()
