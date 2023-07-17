@@ -15,4 +15,5 @@ class Solution:
             else:
                 i += 1
                 save = ans
+
                 ans += i * 9*(10**(i-1))
