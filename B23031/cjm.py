@@ -59,8 +59,6 @@ class Ahri:
         return tuple(self.curr)
                     
 
-
-
 class Zombie:
     def __init__(self, curr) -> None:
         self.curr = curr
