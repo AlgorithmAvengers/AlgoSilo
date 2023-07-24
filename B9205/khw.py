@@ -13,7 +13,7 @@ def bfs():
             return
         for i in range(n+1):
             temp_x, temp_y = graph[i]
-            if visited[i] == False & ((abs(x-temp_x) + abs(y-temp_y))//50) <= 20:
+            if (visited[i] == False) & (((abs(x-temp_x) + abs(y-temp_y))//50) <= 20):
                 visited[i] = True
                 q.append([temp_x, temp_y])
     print('sad')
