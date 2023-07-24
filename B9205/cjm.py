@@ -30,9 +30,9 @@ def beer_walking():
         went = [False for _ in range(cs+2)]
         went[0] = True
         # print(distance(cs+1, 0, dic))
-        if distance(cs+1, 0, dic) <= 1000:
-            print("happy")
-            continue
+        # if distance(cs+1, 0, dic) <= 1000:
+        #     print("happy")
+        #     continue
         for i in range(1, cs+1):
             if distance(i, 0, dic) <= 1000:
                 bfs.put(i)
