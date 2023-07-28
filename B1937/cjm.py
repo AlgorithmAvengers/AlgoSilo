@@ -6,7 +6,6 @@ pandaLand = []  # 판다랜드
 for i in range(N):
     pandaLand.append(list(map(int, sys.stdin.readline().strip().split(" "))))
 
-
 def check(point):
     currVal = pandaLand[point[0]][point[1]]
     row = point[0]
