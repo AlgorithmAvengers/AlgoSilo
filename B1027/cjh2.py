@@ -10,8 +10,7 @@ for i in range(n):
         grad[i][j] = (buildings[i] - buildings[j]) / (i-j)
 
 # 각 건물에서 볼 수 있는 건물의 갯수 구하기
-# max_cnt[A]: A 건물에서 볼 수 있는 건물의 갯수
-max_cnt = [0] * n
+max_cnt = 0
 for i in range(n):
     cnt = 0
     # 왼쪽에서 볼 수 있는 건물 갯수 구하기
@@ -28,5 +27,6 @@ for i in range(n):
             if grad[i][k] >= grad[i][r]:
                 possible = False
         if possible: cnt += 1
-    max_cnt[i] = cnt
-print(max(max_cnt))
+    if max_cnt < cnt:
+        max_cnt = cnt
+print(max_cnt)
