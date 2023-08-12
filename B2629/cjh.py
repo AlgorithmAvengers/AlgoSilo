@@ -21,23 +21,23 @@ dp = [[0 for j in range((i+1)*500+1)] for i in range(w_num+1)]
 
 result = []
 
-# DP라는 함수를 통하여 dp 행렬을 채울 수 있도록 함(weight는 추로 나타낼 수 있는 무게, possible은 무게를 표현 가능한지 여부를 나타냄)
-def DP(weight, possible):
-    # weight가 w_num보다 큰 경우에는 가능한 무게가 아니므로 return
-    if weight > w_num:
+# DP라는 함수를 통하여 dp 행렬을 채울 수 있도록 함(gram는 추로 나타낼 수 있는 무게, weight은 추의 무게를 나타냄)
+def DP(gram, weight):
+    # gram이 w_num보다 큰 경우에는 dp에 저장 가능한 무게가 아니므로 return
+    if gram > w_num:
         return
     
-    # 이미 표현 가능하다면 return
-    if dp[weight][possible]:
+    # 이미 나타낼 수 있는 무게라면 return
+    if dp[gram][weight]:
         return
     
     # 위의 두 경우를 모두 통과하면 가능한 무게로 고려함
-    dp[weight][possible] = 1
+    dp[gram][weight] = 1
 
     # 추를 구슬과 함께 놓을지, 아니면 다른 곳에 놓을지 아예 올리지 않을지 기준으로 나누어서 각각의 함수를 호출
-    DP(weight+1, possible)
-    DP(weight+1, possible + weights[weight-1])
-    DP(weight+1, abs(possible - weights[weight-1]))
+    DP(gram+1, weight)
+    DP(gram+1, weight + weights[gram-1])
+    DP(gram+1, abs(weight - weights[gram-1]))
 
 # 시작점으로부터 전체 dp 행렬을 채우는 함수를 실행함
 DP(0, 0)
