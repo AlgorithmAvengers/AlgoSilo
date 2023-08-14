@@ -9,7 +9,7 @@ for i in range(n):
     x = i
     y = buildings[i]
     count = 0
-    for j in range(len(buildings)):
+    for j in range(n):
         if i == j:
             continue
 
