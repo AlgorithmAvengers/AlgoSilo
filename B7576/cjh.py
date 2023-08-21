@@ -19,7 +19,7 @@ def bfs():
                 tomato[nx][ny] = tomato[x][y] + 1
                 queue.append([nx, ny])
 
-queue = deque([])
+queue = deque()
 
 for i in range(m):
     for j in range(n):
