@@ -8,26 +8,29 @@ def bfs(start: set, tomato_box: list):
     queue = deque()
     queue.append(start)
     count = 0
+    visit = set()
     while queue:
         this_turn = queue.popleft()
         next_turn = set()
         for i in this_turn:
             y = i[0]
             x = i[1]
-            judge = False
-            for j in range(4):
-                new_y = y + dy[j]
-                new_x = x + dx[j]
-                if new_x < 0 or new_x >= m or new_y < 0 or new_y >= n:
-                    continue
-                if tomato_box[new_y][new_x] == 0:
-                    temp_count = count + 1
-                    tomato_box[new_y][new_x] = temp_count
-                    next_turn.add((new_y, new_x))
-                    judge = True
-        if judge:
-            count += 1
-        queue.append(next_turn)
+            if (y,x) not in visit:
+                visit.add((y,x))
+                judge = False
+                for j in range(4):
+                    new_y = y + dy[j]
+                    new_x = x + dx[j]
+                    if new_x < 0 or new_x >= m or new_y < 0 or new_y >= n:
+                        continue
+                    if tomato_box[new_y][new_x] == 0:
+                        temp_count = count + 1
+                        tomato_box[new_y][new_x] = temp_count
+                        next_turn.add((new_y, new_x))
+                        judge = True
+                if judge:
+                    count += 1
+                queue.append(next_turn)
     return tomato_box
 
 m, n = map(int, input().split())
@@ -54,4 +57,4 @@ for i in answer:
 if 0 in temp:
     print(-1)
 else:
-    print(max(a))
+    print(max(temp))
