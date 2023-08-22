@@ -17,25 +17,6 @@ public:
     }
 };
 
-Node *insert(Node *curr, Node *newNode) {
-    if(curr == nullptr) {
-        return newNode;
-    }
-    if(curr->time < newNode->time) {
-        curr->right = insert(curr->right, newNode);
-    }
-    else if(curr->time > newNode->time) {
-        curr->left = insert(curr->left, newNode);
-    }
-    else if(!newNode->isStart) {
-        curr->left = insert(curr->left, newNode);
-    }
-    else {
-        curr->right = insert(curr->right, newNode);
-    }
-    return curr;
-}
-
 class MyCalendarThree {
 public:
     Node *root = nullptr;
@@ -43,6 +24,27 @@ public:
     int temp;
     MyCalendarThree() {}
 
+    // O(logn) (average)
+    Node *insert(Node *curr, Node *newNode) {
+        if(curr == nullptr) {
+            return newNode;
+        }
+        if(curr->time < newNode->time) {
+            curr->right = insert(curr->right, newNode);
+        }
+        else if(curr->time > newNode->time) {
+            curr->left = insert(curr->left, newNode);
+        }
+        else if(!newNode->isStart) {
+            curr->left = insert(curr->left, newNode);
+        }
+        else {
+            curr->right = insert(curr->right, newNode);
+        }
+        return curr;
+    }
+
+    // O(n)
     void getMaxBook(Node *curr) {
         if(curr == nullptr) {
             return;
